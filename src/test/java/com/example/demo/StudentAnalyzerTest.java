@@ -56,4 +56,17 @@ public class StudentAnalyzerTest {
         StudentAnalyzer analyzer = new StudentAnalyzer();
         assertEquals(5.0, analyzer.calculateValidAverage(Arrays.asList(0.0, 10.0)), 0.01);
     }
+
+    @Test
+    public void testCountExcellentStudents_NullInput() {
+        StudentAnalyzer analyzer = new StudentAnalyzer();
+        assertEquals(0, analyzer.countExcellentStudents(null));
+    }
+
+    @Test
+    public void testCalculateValidAverage_NullInput() {
+        StudentAnalyzer analyzer = new StudentAnalyzer();
+        assertEquals(0, analyzer.calculateValidAverage(null));
+    }
+
 }
