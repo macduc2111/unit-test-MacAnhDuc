@@ -34,6 +34,18 @@ public class StudentAnalyzerTest {
     }
 
     @Test
+    public void testCountExcellentStudents_NullInput() {
+        StudentAnalyzer analyzer = new StudentAnalyzer();
+        assertEquals(0, analyzer.countExcellentStudents(null));
+    }
+
+    @Test
+    public void testCountExcellentStudents_NoExcellent() {
+        StudentAnalyzer analyzer = new StudentAnalyzer();
+        assertEquals(0, analyzer.countExcellentStudents(Arrays.asList(6.0, 7.0, 7.5)));
+    }
+
+    @Test
     public void testCalculateValidAverage_NormalCase() {
         StudentAnalyzer analyzer = new StudentAnalyzer();
         assertEquals(8.17, analyzer.calculateValidAverage(Arrays.asList(9.0, 8.5, 7.0, 11.0, -1.0)), 0.01);
@@ -52,15 +64,15 @@ public class StudentAnalyzerTest {
     }
 
     @Test
-    public void testCalculateValidAverage_AllValidBoundary() {
+    public void testCalculateValidAverage_ValidButAllInvalidRange() {
         StudentAnalyzer analyzer = new StudentAnalyzer();
-        assertEquals(5.0, analyzer.calculateValidAverage(Arrays.asList(0.0, 10.0)), 0.01);
+        assertEquals(0, analyzer.calculateValidAverage(Arrays.asList(11.0, -3.0)));
     }
 
     @Test
-    public void testCountExcellentStudents_NullInput() {
+    public void testCalculateValidAverage_AllValidBoundary() {
         StudentAnalyzer analyzer = new StudentAnalyzer();
-        assertEquals(0, analyzer.countExcellentStudents(null));
+        assertEquals(5.0, analyzer.calculateValidAverage(Arrays.asList(0.0, 10.0)), 0.01);
     }
 
     @Test
@@ -68,5 +80,4 @@ public class StudentAnalyzerTest {
         StudentAnalyzer analyzer = new StudentAnalyzer();
         assertEquals(0, analyzer.calculateValidAverage(null));
     }
-
 }
